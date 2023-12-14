@@ -48,7 +48,7 @@ resource "aws_security_group" "private-SG" {
 
 /*--------------- Key Pair ---------------*/
 
-resource "aws_key_pair" "key-pair-01" {
+resource "aws_key_pair" "Prometheus" {
   key_name   = var.key_pair
   public_key = tls_private_key.rsa.public_key_openssh
 }
