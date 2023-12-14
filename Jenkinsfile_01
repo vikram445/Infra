@@ -1,1 +1,68 @@
+pipeline 
+{
+    agent any
+    environment {
+        AWS_DEFAULT_REGION    = "ap-northeast-1"
+        REPO_URL = 'https://github.com/vikram445/Infra.git'
+    }
 
+    parameters {
+        choice(name: 'Action', choices: ['Build', 'Destroy'], description: 'Select the action to perform')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: "${REPO_URL}"]]])
+                }
+            }
+        }
+        stage('Init') {
+            steps {
+                // Initialize Terraform
+                sh 'terraform init'
+            }
+        }
+        stage('Validate') {
+            steps {
+                // Validate Terraform configuration
+                sh 'terraform validate'
+            }
+        }
+        stage('Plan') {
+            steps {
+                // Generate Terraform plan
+                sh 'terraform plan'
+            }
+        }
+        stage('Approval') {
+            when {
+                expression { params.Action == 'Build' }
+            }
+            steps {
+                input(message: 'Do you want to apply the plan?')
+            }
+        }
+        stage('Apply') {
+            when {
+                expression { params.Action == 'Build' }
+            }
+            steps {
+                // Apply Terraform changes
+                sh 'terraform apply -auto-approve'
+
+            }
+        }
+       stage('Destroy') {
+            when {
+                expression { params.Action == 'Destroy' }
+            }
+            steps {
+                // Apply Terraform changes
+                sh 'terraform destroy -auto-approve'
+
+            }
+        }
+    }
+}
