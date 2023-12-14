@@ -24,7 +24,7 @@ variable "root_private_sg_name" {
 
 variable "root_key_pair" {
   type    = string
-  default = "Prometheus"
+  default = "ninja-01"
 }
 
 /*--------------- Bastion Instance ---------------*/
