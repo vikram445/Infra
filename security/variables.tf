@@ -33,7 +33,7 @@ variable "vpc_id" {
 
 variable "key_pair" {
   type    = string
-  default = "ninja-01"
+  default = "Prometheus"
 }
 
 /*--------------- AMI variables---------------*/
