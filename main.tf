@@ -68,7 +68,7 @@ module "security_module" {
   private_ingress_ports = var.root_private_ingress_ports
   /*--------------- Key Pair ---------------*/
 
-  key_pair = var.root_key_pair
+  key_name = data.aws_key_pair.existing_key_pair.key_name
 
   /*--------------- Bastion Instance ---------------*/
   public_instance_count = var.root_public_instance_count
