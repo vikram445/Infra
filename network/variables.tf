@@ -32,7 +32,7 @@ variable "public_subnets_cidr" {
 variable "public_subnets_az" {
   description = "public subnet availability zones"
   type        = list(string)
-  default     = ["eu-west-3a", "eu-west-3b"]
+  default     = ["ap-northeast-1a", "ap-northeast-1c"]
 }
 variable "enable_map_public_ip_on_launch" {
   type    = bool
@@ -61,7 +61,7 @@ variable "private_subnets_cidr" {
 variable "private_subnets_az" {
   description = "private subnet availability zones"
   type        = list(string)
-  default     = ["eu-west-3a", "eu-west-3b"]
+  default     = ["ap-northeast-1a", "ap-northeast-1c"]
 
 }
 
