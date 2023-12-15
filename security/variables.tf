@@ -11,7 +11,7 @@ variable "bastion_sg_name" {
 }
 
 
-/*--------------- Public SG variables ---------------*/
+/*--------------- Private SG variables ---------------*/
 
 variable "private_ingress_ports" {
   description = "SG inbound ports"
