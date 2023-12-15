@@ -14,6 +14,15 @@ resource "aws_security_group" "bastion-SG" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   }
+
+ingress {
+    from_port   = -1  
+    to_port     = -1  
+    protocol    = "ICMP"
+    cidr_blocks = ["0.0.0.0/0"]
+    
+  }
+
   egress {
     from_port   = 0
     protocol    = "-1"
@@ -38,6 +47,15 @@ resource "aws_security_group" "private-SG" {
       cidr_blocks = [ var.public_subnets_cidr[0] ]
     }
   }
+
+ingress {
+    from_port   = -1  
+    to_port     = -1  
+    protocol    = "ICMP"
+    cidr_blocks = ["0.0.0.0/0"]
+    
+  }
+
   egress {
     from_port   = 0
     protocol    = "-1"
@@ -89,7 +107,7 @@ resource "aws_instance" "private_instance_01"{
   depends_on             = [aws_security_group.private-SG]
 tags = {
     Name = "${var.private_instance_name}-0${count.index + 1}"
-    group = "cassandra_nodes"
+    
   }
 }
 
@@ -116,7 +134,7 @@ resource "aws_instance" "private_instance_02" {
   vpc_security_group_ids = [aws_security_group.private-SG.id]
   depends_on             = [aws_security_group.private-SG]
 tags = {
-    Name = "${var.private_instance_name}-0${count.index + 3}"
-    group = "cassandra_nodes"
+    Name = "${var.private_instance_name}-0${count.index + 2}"
+    
   }
 }
