@@ -15,7 +15,7 @@ pipeline {
         } 
         stage('Terraform Init') {
             steps {
-                sh "cd ${env.TERRAFORM_WORKSPACE} && terraform init"
+                sh "cd ${env.TERRAFORM_WORKSPACE} && terraform init --upgrade"
             }
         }
         stage('Validate Code') {
