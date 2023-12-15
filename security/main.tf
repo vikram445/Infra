@@ -93,6 +93,20 @@ tags = {
   }
 }
 
+/*--------------- Node_exp ---------------*/
+
+resource "aws_instance" "node_exp"{
+  ami                    = var.ami_id
+  instance_type          = var.private_instance_type
+  subnet_id              = var.private_instance_subnet_id[0]
+  key_name               = var.key_pair
+  vpc_security_group_ids = [aws_security_group.private-SG.id]
+  depends_on             = [aws_security_group.private-SG]
+tags = {
+    Name = "node_exp"
+  }
+}
+
 resource "aws_instance" "private_instance_02" {
   count                  = var.private_instance_count
   ami                    = var.ami_id
