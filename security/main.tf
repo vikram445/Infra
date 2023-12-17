@@ -44,7 +44,7 @@ resource "aws_security_group" "private-SG" {
       from_port   = ingress_port.value
       protocol    = "TCP"
       to_port     = ingress_port.value
-      cidr_blocks = [ var.public_subnets_cidr[0] ]
+       cidr_blocks = ["0.0.0.0/0"]
     }
   }
 
