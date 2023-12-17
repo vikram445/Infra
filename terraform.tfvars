@@ -59,7 +59,7 @@ root_private_sg_name = "private-SG"
 
 /*--------------- Key Pair ---------------*/
 
-root_key_pair = "ninja-01.pem"
+root_key_pair = "ninja-01"
 
 /*--------------- Bastion Instance ---------------*/
 
