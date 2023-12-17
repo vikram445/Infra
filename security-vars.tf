@@ -37,7 +37,7 @@ variable "root_public_instance_count" {
 variable "root_bastion_instance_type" {
   description = "type of instance for bastion server"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.micro"
   
 }
 
@@ -53,14 +53,14 @@ variable "root_bastion_instance_name" {
 variable "root_private_instance_count" {
   description = "Number of private instances to create"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 
 variable "root_private_instance_type" {
   description = "type of instance for bastion server"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.micro"
   
 }
 
