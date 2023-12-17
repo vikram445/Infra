@@ -33,7 +33,7 @@ variable "root_public_subnets_cidr" {
 variable "root_public_subnets_az" {
   description = "public subnet availability zones"
   type        = list(string)
-  default     = ["ap-northeast-1a","ap-northeast-1a"]
+  default     = ["ap-northeast-1a","ap-northeast-1c"]
 }
 variable "root_enable_map_public_ip_on_launch" {
   type = bool
