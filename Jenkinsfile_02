@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         REPO_URL = 'https://github.com/vikram445/Infra.git'
-        TERRAFORM_WORKSPACE = "/var/lib/jenkins/workspace/terraform"
+        TERRAFORM_WORKSPACE = "/var/lib/jenkins/workspace/${JOB_NAME}"
     }
     stages {
         stage('Clone Repository') {
